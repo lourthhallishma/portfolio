@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)file:///C:/Users/halli/OneDrive/Desktop/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="./indexx_files/css2" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --dark-tan: #5E4B3C;
+            --medium-tan: #A68A64;
+            --light-tan: #D4B483;
+            --lightest-tan: #F0E5D3;
+            --text-dark: #2A2118;
+            --text-light: #F8F4EE;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        body {
+            background-color: var(--lightest-tan);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 120px; /* Space for fixed navbar */
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background: var(--light-tan);
+            position: fixed;
+            top: 120px;
+            left: 0;
+            z-index: 999;
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background: var(--dark-tan);
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            font-weight: normal;
+            text-transform: capitalize;
+        }
+        
+        h1 {
+            font-size: 5rem;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            border-bottom: 2px solid var(--medium-tan);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        h3 {
+            font-size: 1.7rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--dark-tan);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--medium-tan);
+        }
+        
+        /* Navbar */
+        nav {
+            background-color: var(--dark-tan);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .nav-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        .nav-btn {
+            background-color: var(--light-tan);
+            color: var(--text-dark);
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-transform: capitalize;
+        }
+        
+        .nav-btn:hover {
+            background-color: var(--lightest-tan);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        /* Hero Card */
+        .hero-card {
+            background-color: var(--light-tan);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 900px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hero-text {
+            text-align: left;
+            flex: 1;
+            padding-right: 2rem;
+        }
+        
+        .hero-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 5px;
+            object-fit: cover;
+            border: 3px solid var(--lightest-tan);
+        }
+        
+        .resume-btn {
+            display: inline-block;
+            background-color: var(--dark-tan);
+            color: var(--lightest-tan) !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .resume-btn:hover {
+            background-color: var(--medium-tan);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: var(--lightest-tan) !important;
+        }
+        
+        /* Research Section */
+        .research-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 3rem;
+            text-align: left;
+        }
+        
+        .research-image {
+            width: 1000px;
+            height: 1000px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .research-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .research-text {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .paper-link {
+            display: inline-block;
+            background-color: var(--dark-tan);
+            color: var(--lightest-tan) !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .paper-link:hover {
+            background-color: var(--medium-tan);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: var(--lightest-tan) !important;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .project-card {
+            background-color: var(--lightest-tan);
+            border: 1px solid var(--light-tan);
+            border-radius: 5px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--medium-tan);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-item {
+            background-color: var(--light-tan);
+            color: var(--text-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .github-link {
+            display: inline-block;
+            background-color: var(--dark-tan);
+            color: var(--lightest-tan) !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            margin-top: 0.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+        
+        .github-link:hover {
+            background-color: var(--medium-tan);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: var(--lightest-tan) !important;
+        }
+        
+        /* Education Section */
+        .education-item {
+            background-color: var(--light-tan);
+            padding: 2rem;
+            border-radius: 5px;
+            margin: 2rem auto;
+            max-width: 700px;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Why Grad School */
+        .grad-school-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .grad-school-image {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-left: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Currently Working On */
+        .working-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .working-card {
+            background-color: var(--light-tan);
+            padding: 1.5rem;
+            border-radius: 5px;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .working-card ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        /* Future Research */
+        .future-research {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .research-card {
+            background-color: var(--lightest-tan);
+            border: 2px solid var(--medium-tan);
+            padding: 1.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .research-card:hover {
+            background-color: var(--light-tan);
+            transform: translateY(-5px);
+        }
+        
+        /* Papers I've Enjoyed */
+        .papers-list {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            text-align: left;
+        }
+        
+        .paper-item {
+            background-color: var(--light-tan);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .paper-item h4 {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-item .authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: var(--dark-tan);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-tan);
+            color: var(--lightest-tan);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .back-to-top {
+            display: inline-block;
+            background-color: var(--light-tan);
+            color: var(--text-dark);
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--lightest-tan);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Parallax Effects */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Section Backgrounds */
+        #research, #grad-school, #papers-enjoyed {
+            background-color: var(--lightest-tan);
+        }
+        
+        #projects, #future-research {
+            background-color: rgba(212, 180, 131, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 180px;
+            }
+            
+            .progress-container {
+                top: 180px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            
+            .research-container, .grad-school-container {
+                flex-direction: column;
+            }
+            
+            .research-image, .grad-school-image {
+                margin: 0 0 2rem 0;
+                width: 100%;
+            }
+            
+            .nav-row {
+                justify-content: center;
+            }
+        }
+        body {
+    padding-top: 100px !important; /* Reduced navbar push-down */
+  }
+
+  /* Navbar itself is now more compact */
+  nav {
+    padding: 0.3rem 0 !important; 
+  }
+
+  /* Hero section glued to navbar */
+  #home {
+    padding: 0.5rem 0 1rem 0 !important; /* Almost no padding */
+  }
+
+  .hero-card {
+    margin: 0.5rem auto !important; /* Hugging the top */
+    padding: 1.5rem !important; /* Tighter internal padding */
+  }
+
+  /* Research section glued to hero */
+  #research {
+    padding: 1rem 0 5rem 0 !important; /* Minimal top padding */
+  }
+
+  /* Progress bar adjustment */
+  .progress-container {
+    top: 100px !important; /* Matches reduced navbar height */
+  }
+
+  /* Slightly reduce hero text size for compactness */
+  .hero-text h1 {
+    font-size: 3.2rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Make research image smaller to fit tighter layout */
+  .research-image {
+    width: 250px !important;
+    height: 160px !important;
+    margin-right: 2rem !important;
+  }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-row">
+                <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#home" class="nav-btn">Home</a>
+                <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#research" class="nav-btn">My Research</a>
+                <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#projects" class="nav-btn">Projects</a>
+                <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#education" class="nav-btn">Education</a>
+            </div>
+            <div class="nav-row">
+                <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#grad-school" class="nav-btn">Why grad school</a>
+                <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#working-on" class="nav-btn">Currently working on</a>
+                <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#future-research" class="nav-btn">Future research</a>
+                <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#papers-enjoyed" class="nav-btn">My Favourite Readings on AI</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar" style="width: 97.3038%;"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="parallax" style="background-position-y: 3421.2px;">
+        <div class="container">
+            <div class="hero-card">
+                <div class="hero-text">
+                    <h1>Hello, I'm Lourth Hallishma</h1>
+                    <h2>Call me Hallishma!</h2>
+                    <p></p><p>
+Deeply passionate about deep learning and the future of generative models. I enjoy combining technical knowledge with creative problem-solving to build transparent, intelligent systems that tackle real-world challenges.
+</p>
+<p></p>
+                </div>
+                <img src="./indexx_files/profile.jpeg" alt="Profile Photo" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <h2>My Research Work</h2>
+            <p>My academic research focuses on Machine Learning in the domain of Customer Segmentation.</p>
+            
+            <div class="research-container">
+    <img src="./indexx_files/research.png" alt="Research Photo" class="research-image">
+    <div class="research-text">
+        <h3>Customer Segmentation Based on RFM Analysis and Unsupervised Machine Learning Technique</h3>
+        <p>This research explores customer segmentation by applying Recency, Frequency, and Monetary (RFM) analysis combined with unsupervised machine learning. My findings demonstrate the effectiveness of segmenting customers into distinct behavioral groups, which can significantly improve targeted marketing strategies. This work has implications for customer relationship management and data-driven business decision-making.</p>
+        <p>Published in <i>Advances in Data Science and Management</i>, Springer, 2023</p>
+        <a href="https://link.springer.com/chapter/10.1007/978-3-031-28183-9_4" class="paper-link" target="_blank">Read the Paper</a>
+    </div>
+</div>
+
+            </div>
+        
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <p>A selection of my technical projects and contributions.</p>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <img src="./indexx_files/xai.png" alt="Project 5" class="project-image">
+                    <h3>Explainable AI for Loan Approval Transparency</h3>
+                    <p>This project is an end-to-end Explainable AI system designed to predict loan approval decisions and make them transparent and interpretable for users using SHAP and a Gradio-powered UI. SHAP is used to interpret the impact of each feature on individual loan decisions.</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">SHAP</span>
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">Matplotlib</span>
+                        <span class="tech-item">Scikit-learn</span>
+                    </div>
+                    <a href="https://github.com/lourthhallishma/loan_xai" class="github-link" target="_blank">View on GitHub</a>
+                </div>
+            
+                <div class="project-card">
+                    <img src="./indexx_files/fashion.png" alt="Project 5" class="project-image">
+                    <h3>AI powered Fashion Stylist</h3>
+                    <p>An AI-powered fashion assistant that classifies clothing items and provides styling suggestions using deep learning. Upload an image of a clothing item and get instant fashion advice. Uses a CNN trained to classify images into 10 fashion categories.</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">CNN</span>
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">Tensorflow</span>
+                        <span class="tech-item">Keras</span>
+                    </div>
+                    <a href="https://github.com/lourthhallishma/aifashionstylist" class="github-link" target="_blank">View on GitHub</a>
+                </div>
+                
+                <div class="project-card">
+                    <img src="./indexx_files/sentiment.jpeg" alt="Project 2" class="project-image">
+                    <h3>Sentiment Analysis of Book Reviews</h3>
+                    <p>This project performs sentiment analysis on Amazon Kindle book reviews using Natural Language Processing (NLP) and Machine Learning. The models implemented include Random Forest Classifier, Gradient Boosting Classifier, Multinomial Naïve Bayes, and Support Vector Machine (SVM).</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">ML models and NLP</span>
+                        <span class="tech-item">Pandas</span>
+                        <span class="tech-item">Scikit-learn</span>
+                    </div>
+                    <a href="https://github.com/lourthhallishma/sentiment-analysis" class="github-link" target="_blank">View on GitHub</a>
+                </div>
+                
+               
+                
+                <div class="project-card">
+                    <img src="./indexx_files/covidscan.png" alt="Project 4" class="project-image">
+                    <h3>COVID-19 &amp; Pneumonia Classification using CNN</h3>
+                    <p>This project implements a Convolutional Neural Network (CNN) model to classify chest X-ray images into three categories: COVID-19, Pneumonia and Normal. The goal is to assist in the early diagnosis of respiratory illnesses using deep learning and medical imaging.</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">Convolutional Neural Networks</span>
+                        <span class="tech-item">Pandas</span>
+                        <span class="tech-item">Tensorflow</span>
+                    </div>
+                    <a href="https://github.com/lourthhallishma/COVIDSCAN" class="github-link" target="_blank">View on GitHub</a>
+                </div>
+                
+                <div class="project-card">
+                    <img src="./indexx_files/cafe.png" alt="Project 6" class="project-image">
+                    <h3>Coffee Shop Website</h3>
+                    <p>This is a Coffee Shop Website that provides an interactive platform for users to explore coffee products, manage reservations, browse blogs, and make online purchases. It features a user-friendly interface, admin dashboard, and a database-backed ordering system.</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">HTML, CSS, JavaScript</span>
+                        <span class="tech-item">PHP</span>
+                        <span class="tech-item">MySQL</span>
+                    </div>
+                    <a href="https://github.com/lourthhallishma/coffeeshopwebsite" class="github-link" target="_blank">View on GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <img src="./indexx_files/portfolioimg.png" alt="Project 6" class="project-image">
+                    <h3>My Portfolio Website</h3>
+                    <p>This is a personal portfolio website showcasing my academic work, research, projects, and curated resources on CS &amp; AI. It includes sections like About Me, Research Work, Projects, and Educational details</p>
+                    <div class="tech-stack">
+                        <span class="tech-item">HTML &amp; CSS</span>
+                        <span class="tech-item">Javascript</span>
+                        
+                    </div>
+                    <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#" class="github-link">View on GitHub</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <h3>Bachelor of Engineering in Computer Science and Engineering</h3>
+                <p><strong>College:</strong> RNG Patel Institute of Tech, Gujarat Technological University</p>
+                <p><strong>Year:</strong> 2020 - 2024</p>
+                <p><strong>CGPA:</strong> 8.44</p>
+            </div>
+
+    <!-- Why Grad School Section -->
+    <section id="grad-school">
+        <div class="container">
+            <h2>Why grad school?</h2>
+            
+            <div class="grad-school-container">
+                <div class="grad-school-text">
+                    <p>I’m pursuing grad school to engage in high-impact, cutting-edge research under leading faculty, especially in areas like deep learning, explainable AI, and broader CS disciplines.</p>
+                    <p>I want to deepen my theoretical foundation, gain access to better research infrastructure, and contribute to solving open problems in AI with transparency and real-world relevance.</p>
+<p>Grad school offers the ideal environment to collaborate, publish, and grow as a researcher.</p>
+        </div>
+    </div></div></section>
+
+    <!-- Currently Working On Section -->
+    <section id="working-on">
+        <div class="container">
+            <h2>Currently working on</h2>
+            <p>My current projects and areas of focus.</p>
+            
+            <div class="working-cards">
+                <div class="working-card">
+                    <h3>Research</h3>
+                    <ul>
+                        <li>Conducting research in <b>Explainable AI</b>, focusing on model interpretability for decision-making systems.</li>
+                        <li>Developing and evaluating <b>surrogate models</b> to approximate and explain complex black-box algorithms.</li>
+                        <li>Preparing a research paper for submission by August–September, aiming for a relevant AI/ML or interdisciplinary conference/journal.
+
+</li>
+                    </ul>
+                </div>
+                
+                <div class="working-card">
+                    <h3>Technical skills</h3>
+                    <ul>
+                        <li>Actively solving Data Structures and Algorithms (DSA) problems to strengthen problem-solving and coding efficiency.</li>
+                        <li>Revisiting core Computer Science fundamentals (OS, DBMS, CN, etc.) and mathematics (discrete math, linear algebra, probability) to reinforce theoretical knowledge.
+
+</li>
+                        
+                    </ul>
+                </div>
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Research Section -->
+    <section id="future-research">
+        <div class="container">
+            <h2>Future research areas</h2>
+            <p>Directions I'm excited to explore in grad school.</p>
+            
+            <div class="future-research">
+                <div class="research-card">
+                    <h3>Area one</h3>
+                    <p>Developing new methods for <b>explaining high-dimensional decision boundaries</b> in deep learning models. Building on prior work in SHAP, LIME, and surrogate interpretability frameworks.</p>
+                </div>
+                
+                <div class="research-card">
+                    <h3>Area two</h3>
+                    <p>Exploring strategic decision-making in multi-agent environments through the lens of reinforcement learning and game-theoretic planning.</p>
+                </div>
+                
+                <div class="research-card">
+                    <h3>Area three</h3>
+                    <p>Interdisciplinary research combining deep learning and human-centered computing to address the problem of transparent and trustworthy AI systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Papers I've Enjoyed Section -->
+<section id="papers-enjoyed">
+  <section id="ai-readings" style="padding: 2rem;">
+    <h2>My Favourite Readings on AI</h2>
+    <p>Some of my favourite readings on AI that have shaped my thinking.</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; border-top: 2px solid #333; border-bottom: 2px solid #333;">
+      
+      <!-- Research Papers -->
+      <div style="flex: 1; min-width: 250px; max-width: 300px; padding: 1rem;">
+        <h3 style="border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Research Papers</h3>
+        <ul style="padding-left: 1rem;">
+          <li style="margin-bottom: 6rem;">
+            <strong>Attention is All You Need</strong><br>
+            <em>Vaswani et al. (2017)</em><br>
+            Introduced the Transformer, now the backbone of GPT, BERT, and modern LLMs.
+          </li>
+          <li style="margin-bottom: 6rem;">
+            <strong>BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</strong><br>
+            <em>Devlin et al. (2018)</em><br>
+            Major leap in pretrained language models, ushered in the fine-tuning era.
+          </li>
+          <li style="margin-bottom: 6rem;">
+            <strong>Why Should I Trust You? Explaining the Predictions of Any Classifier</strong><br>
+            <em>Ribeiro, Singh, Guestrin (2016)</em><br>
+            Introduced LIME, one of the most widely-used explainability methods.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Fiction -->
+      <div style="flex: 1; min-width: 250px; max-width: 300px; padding: 1rem; border-left: 2px solid #333;">
+        <h3 style="border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Fiction</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li style="text-align: center; margin-bottom: 1.5rem;">
+            <img src="./indexx_files/neuromancer.jpg" alt="Neuromancer" style="width: 100px;"><br>
+            <strong>Neuromancer</strong><br>
+            William Gibson
+          </li>
+          <li style="text-align: center; margin-bottom: 1.5rem;">
+            <img src="./indexx_files/robot.jpg" alt="I, Robot" style="width: 100px;"><br>
+            <strong>I, Robot</strong><br>
+            Isaac Asimov
+          </li>
+          <li style="text-align: center;">
+            <img src="./indexx_files/android.jpg" alt="Android" style="width: 100px;"><br>
+            <strong>Do Androids Dream of Electric Sheep?</strong><br>
+            Philip K. Dick
+          </li>
+        </ul>
+      </div>
+
+      <!-- Non-fiction -->
+      <div style="flex: 1; min-width: 250px; max-width: 300px; padding: 1rem; border-left: 2px solid #333;">
+        <h3 style="border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Non-fic &amp; Technical</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li style="text-align: center; margin-bottom: 1.5rem;">
+            <img src="./indexx_files/make.jpg" alt="Make Your Own Neural Network" style="width: 120px;"><br>
+            <strong>Make Your Own Neural Network</strong><br>
+            Tariq Rashid
+          </li>
+          <li style="text-align: center; margin-bottom: 1.5rem;">
+            <img src="./indexx_files/hundred.jpg" alt="Hundred-Page ML Book" style="width: 120px;"><br>
+            <strong>The Hundred-Page Machine Learning Book</strong><br>
+            Andriy Burkov
+          </li>
+          <li style="text-align: center;">
+            <img src="./indexx_files/thing.jpg" alt="You Look Like a Thing" style="width: 120px;"><br>
+            <strong>You Look Like a Thing and I Love You</strong><br>
+            Janelle Shane
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</section>
+
+
+    </div></section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="quote">“Somewhere, something incredible is waiting to be known.”
+<br>— Carl Sagan</p>
+            <a href="file:///C:/Users/halli/OneDrive/Desktop/index.html#home" class="back-to-top">Back to Top</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple parallax effect
+        window.addEventListener('scroll', function() {
+            const parallax = document.querySelector('.parallax');
+            if (parallax) {
+                let scrollPosition = window.pageYOffset;
+                parallax.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+            }
+        });
+        
+        // Progress bar
+        window.onscroll = function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+    </script>
+
+</body></html>
